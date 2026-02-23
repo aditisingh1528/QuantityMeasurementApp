@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "tDuceg0fJ9Q=",
+  "dgSpecHash": "I1BOMWr3A2w=",
   "success": true,
-  "projectFilePath": "C:\\Users\\LENOVO\\Desktop\\QuantityMeasurement\\QuantityMeasurementApp.Tests\\QuantityMeasurementApp.Tests.csproj",
+  "projectFilePath": "C:\\Users\\LENOVO\\Desktop\\QuantityMeasurementApp\\QuantityMeasurementApp.Tests\\QuantityMeasurementApp.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\LENOVO\\.nuget\\packages\\microsoft.codecoverage\\17.11.1\\microsoft.codecoverage.17.11.1.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\microsoft.net.test.sdk\\17.11.1\\microsoft.net.test.sdk.17.11.1.nupkg.sha512",

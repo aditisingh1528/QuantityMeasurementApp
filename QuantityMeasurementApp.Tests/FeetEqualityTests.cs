@@ -38,6 +38,7 @@ public class FeetEqualityTests
         Assert.That(result, Is.False);
     }
 
+    
     [Test]
     public void AreFeetEqual_NullComparison_ThrowsException()
     {

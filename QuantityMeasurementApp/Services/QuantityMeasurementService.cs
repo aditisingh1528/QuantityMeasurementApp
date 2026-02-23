@@ -7,6 +7,7 @@ namespace QuantityMeasurementApp.Services
     {
         public bool AreFeetEqual(Feet firstMeasurement, Feet secondMeasurement)
         {
+            
             if (firstMeasurement is null || secondMeasurement is null)
                 throw new QuantityMeasurementException("Measurement values cannot be null.");
 

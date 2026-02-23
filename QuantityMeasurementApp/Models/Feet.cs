@@ -29,4 +29,5 @@ namespace QuantityMeasurementApp.Models
             return Value.GetHashCode();
         }
     }
+    
 }

@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\LENOVO\\Desktop\\QuantityMeasurement\\QuantityMeasurementApp\\QuantityMeasurementApp.csproj",
+      "projectUniqueName": "C:\\Users\\LENOVO\\Desktop\\QuantityMeasurementApp\\QuantityMeasurementApp\\QuantityMeasurementApp.csproj",
       "projectName": "QuantityMeasurementApp",
-      "projectPath": "C:\\Users\\LENOVO\\Desktop\\QuantityMeasurement\\QuantityMeasurementApp\\QuantityMeasurementApp.csproj",
+      "projectPath": "C:\\Users\\LENOVO\\Desktop\\QuantityMeasurementApp\\QuantityMeasurementApp\\QuantityMeasurementApp.csproj",
       "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\LENOVO\\Desktop\\QuantityMeasurement\\QuantityMeasurementApp\\obj\\",
+      "outputPath": "C:\\Users\\LENOVO\\Desktop\\QuantityMeasurementApp\\QuantityMeasurementApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

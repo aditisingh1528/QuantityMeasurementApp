@@ -9,6 +9,7 @@ namespace QuantityMeasurementApp
     {
         static void Main(string[] args)
         {
+            
             IQuantityMeasurementService measurementService = new QuantityMeasurementService();
 
             try
