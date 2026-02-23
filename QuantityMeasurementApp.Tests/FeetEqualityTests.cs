@@ -66,4 +66,55 @@ public class FeetEqualityTests
 
         Assert.That(result, Is.False);
     }
+
+    [Test]
+    public void AreInchesEqual_SameValue_ReturnsTrue()
+    {
+        Inches first = new Inches(1.0);
+        Inches second = new Inches(1.0);
+
+        bool result = _measurementService.AreInchesEqual(first, second);
+
+        Assert.That(result, Is.True);
+    }
+
+    [Test]
+    public void AreInchesEqual_DifferentValue_ReturnsFalse()
+    {
+        Inches first = new Inches(1.0);
+        Inches second = new Inches(2.0);
+
+        bool result = _measurementService.AreInchesEqual(first, second);
+
+        Assert.That(result, Is.False);
+    }
+
+    [Test]
+    public void AreInchesEqual_NullComparison_ThrowsException()
+    {
+        Inches first = new Inches(1.0);
+
+        Assert.Throws<QuantityMeasurementException>(() =>
+            _measurementService.AreInchesEqual(first, null!));
+    }
+
+    [Test]
+    public void AreInchesEqual_SameReference_ReturnsTrue()
+    {
+        Inches first = new Inches(1.0);
+
+        bool result = _measurementService.AreInchesEqual(first, first);
+
+        Assert.That(result, Is.True);
+    }
+
+    [Test]
+    public void Inches_Equals_DifferentType_ReturnsFalse()
+    {
+        Inches first = new Inches(1.0);
+
+        bool result = first.Equals("InvalidType");
+
+        Assert.That(result, Is.False);
+    }
 }

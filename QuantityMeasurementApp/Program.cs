@@ -13,28 +13,31 @@ namespace QuantityMeasurementApp
 
             try
             {
-                Console.Write("Enter first value in feet: ");
-                string firstInput = Console.ReadLine();
-
-                Console.Write("Enter second value in feet: ");
-                string secondInput = Console.ReadLine();
-
-                if (!double.TryParse(firstInput, out double firstValue) || !double.TryParse(secondInput, out double secondValue))
-                {
-                    throw new QuantityMeasurementException("Invalid numeric input.");
-                }
-
-                Feet firstMeasurement = new Feet(firstValue);
-                Feet secondMeasurement = new Feet(secondValue);
-
-                bool result = measurementService.AreFeetEqual(firstMeasurement, secondMeasurement);
-
-                Console.WriteLine($"Equal: {result}");
+                DemonstrateFeetEquality(measurementService);
+                DemonstrateInchesEquality(measurementService);
             }
             catch (QuantityMeasurementException ex)
             {
                 Console.WriteLine($"Error: {ex.Message}");
             }
+        }
+
+        private static void DemonstrateFeetEquality(IQuantityMeasurementService service)
+        {
+            Feet first = new Feet(1.0);
+            Feet second = new Feet(1.0);
+
+            bool result = service.AreFeetEqual(first, second);
+            Console.WriteLine($"Feet Equal: {result}");
+        }
+
+        private static void DemonstrateInchesEquality(IQuantityMeasurementService service)
+        {
+            Inches first = new Inches(1.0);
+            Inches second = new Inches(1.0);
+
+            bool result = service.AreInchesEqual(first, second);
+            Console.WriteLine($"Inches Equal: {result}");
         }
     }
 }

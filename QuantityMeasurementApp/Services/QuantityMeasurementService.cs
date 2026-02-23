@@ -12,5 +12,13 @@ namespace QuantityMeasurementApp.Services
 
             return firstMeasurement.Equals(secondMeasurement);
         }
+
+        public bool AreInchesEqual(Inches firstMeasurement, Inches secondMeasurement)
+        {
+            if (firstMeasurement is null || secondMeasurement is null)
+                throw new QuantityMeasurementException("Measurement values cannot be null.");
+
+            return firstMeasurement.Equals(secondMeasurement);
+        }
     }
 }
