@@ -1,7 +1,12 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
     <ProjectReference Include="..\QuantityMeasurement.Model\QuantityMeasurement.Model.csproj" />
+  </ItemGroup>
+
+  <!-- UC16: ADO.NET SQL Server driver -->
+  <ItemGroup>
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
   </ItemGroup>
 
   <PropertyGroup>

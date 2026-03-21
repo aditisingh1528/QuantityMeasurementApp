@@ -1,5 +1,6 @@
 using QuantityMeasurementBusinessLayer.Interfaces;
 using QuantityMeasurementModel.DTOs;
+using QuantityMeasurementModel.Entities;
 
 namespace QuantityMeasurementConsoleApp.Controllers
 {
@@ -11,30 +12,28 @@ namespace QuantityMeasurementConsoleApp.Controllers
         {
             this.service = service;
         }
-
         public bool Compare(QuantityDTO q1, QuantityDTO q2)
-        {
-            return service.Compare(q1, q2);
-        }
+            => service.Compare(q1, q2);
 
         public QuantityDTO Convert(QuantityDTO q, string target)
-        {
-            return service.Convert(q, target);
-        }
+            => service.Convert(q, target);
 
         public QuantityDTO Add(QuantityDTO q1, QuantityDTO q2)
-        {
-            return service.Add(q1, q2);
-        }
+            => service.Add(q1, q2);
 
         public QuantityDTO Subtract(QuantityDTO q1, QuantityDTO q2)
-        {
-            return service.Subtract(q1, q2);
-        }
+            => service.Subtract(q1, q2);
 
         public double Divide(QuantityDTO q1, QuantityDTO q2)
-        {
-            return service.Divide(q1, q2);
-        }
+            => service.Divide(q1, q2);
+
+        public List<QuantityMeasurementEntity> GetAllMeasurements()
+            => service.GetAllMeasurements();
+
+        public List<QuantityMeasurementEntity> GetMeasurementsByOperation(string operationType)
+            => service.GetMeasurementsByOperation(operationType);
+
+        public string GetPoolStatistics()
+            => service.GetPoolStatistics();
     }
 }
