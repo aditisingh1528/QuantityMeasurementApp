@@ -20,7 +20,7 @@ namespace QuantityMeasurementWebApi.Controllers
             _logger  = logger;
         }
 
-        /// <summary>Compare two quantities. Returns { resultString: "true"|"false" }.</summary>
+        // Compare two quantities. Returns { resultString: "true"|"false" }.
         [HttpPost("compare")]
         public ActionResult<QuantityMeasurementDTO> Compare([FromBody] TwoOperandRequestDTO request)
         {
@@ -28,7 +28,7 @@ namespace QuantityMeasurementWebApi.Controllers
             return Ok(result);
         }
 
-        /// <summary>Convert a quantity to a different unit of the same type.</summary>
+        // Convert a quantity to a different unit of the same type.
         [HttpPost("convert")]
         public ActionResult<QuantityMeasurementDTO> Convert([FromBody] ConvertRequestDTO request)
         {
@@ -38,7 +38,7 @@ namespace QuantityMeasurementWebApi.Controllers
             return Ok(result);
         }
 
-        /// <summary>Add two quantities; result expressed in the unit of the first operand.</summary>
+        // Add two quantities; result expressed in the unit of the first operand.
         [HttpPost("add")]
         public ActionResult<QuantityMeasurementDTO> Add([FromBody] TwoOperandRequestDTO request)
         {
@@ -46,7 +46,7 @@ namespace QuantityMeasurementWebApi.Controllers
             return Ok(result);
         }
 
-        /// <summary>Add two quantities; result expressed in the specified target unit.</summary>
+        // Add two quantities; result expressed in the specified target unit.
         [HttpPost("add-with-target-unit")]
         public ActionResult<QuantityMeasurementDTO> AddWithTargetUnit(
             [FromBody] ArithmeticWithTargetRequestDTO request)
@@ -56,7 +56,7 @@ namespace QuantityMeasurementWebApi.Controllers
             return Ok(result);
         }
 
-        /// <summary>Subtract two quantities; result expressed in the unit of the first operand.</summary>
+        // Subtract two quantities; result expressed in the unit of the first operand.
         [HttpPost("subtract")]
         public ActionResult<QuantityMeasurementDTO> Subtract([FromBody] TwoOperandRequestDTO request)
         {
@@ -64,7 +64,7 @@ namespace QuantityMeasurementWebApi.Controllers
             return Ok(result);
         }
 
-        /// <summary>Subtract two quantities; result expressed in the specified target unit.</summary>
+        // Subtract two quantities; result expressed in the specified target unit.
         [HttpPost("subtract-with-target-unit")]
         public ActionResult<QuantityMeasurementDTO> SubtractWithTargetUnit(
             [FromBody] ArithmeticWithTargetRequestDTO request)
@@ -74,7 +74,7 @@ namespace QuantityMeasurementWebApi.Controllers
             return Ok(result);
         }
 
-        /// <summary>Divide two quantities; returns a dimensionless ratio.</summary>
+        // Divide two quantities; returns a dimensionless ratio.
         [HttpPost("divide")]
         public ActionResult<QuantityMeasurementDTO> Divide([FromBody] TwoOperandRequestDTO request)
         {
@@ -82,28 +82,28 @@ namespace QuantityMeasurementWebApi.Controllers
             return Ok(result);
         }
 
-        /// <summary>Returns all saved operations matching the given operation name (COMPARE, ADD, etc).</summary>
+        // Returns all saved operations matching the given operation name (COMPARE, ADD, etc).
         [HttpGet("history/operation/{operation}")]
         public ActionResult<List<QuantityMeasurementDTO>> GetByOperation(string operation)
         {
             return Ok(_service.GetOperationHistory(operation));
         }
 
-        /// <summary>Returns all saved operations for a given measurement type (LengthUnit, etc).</summary>
+        // Returns all saved operations for a given measurement type (LengthUnit, etc).
         [HttpGet("history/type/{type}")]
         public ActionResult<List<QuantityMeasurementDTO>> GetByType(string type)
         {
             return Ok(_service.GetMeasurementsByType(type));
         }
 
-        /// <summary>Returns the count of successful (non-error) operations of a given type.</summary>
+        // Returns the count of successful (non-error) operations of a given type.
         [HttpGet("count/{operation}")]
         public ActionResult<long> GetCount(string operation)
         {
             return Ok(_service.GetOperationCount(operation));
         }
 
-        /// <summary>Returns all operations that resulted in an error.</summary>
+        // Returns all operations that resulted in an error.
         [HttpGet("history/errored")]
         public ActionResult<List<QuantityMeasurementDTO>> GetErrored()
         {

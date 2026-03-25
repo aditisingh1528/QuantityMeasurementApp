@@ -33,7 +33,7 @@ namespace QuantityMeasurement.Tests
             });
         }
 
-        // ── helpers ──────────────────────────────────────────────────────
+        //  helpers 
 
         private static TwoOperandRequestDTO TwoOp(
             double v1, string u1, string mt1,
@@ -54,7 +54,7 @@ namespace QuantityMeasurement.Tests
                 IsError      = false
             };
 
-        // ── compare ──────────────────────────────────────────────────────
+        //  compare 
 
         [Fact]
         public async Task TestCompareQuantities_Success()
@@ -74,7 +74,7 @@ namespace QuantityMeasurement.Tests
             Assert.Equal("true", result!.ResultString);
         }
 
-        // ── add ──────────────────────────────────────────────────────────
+        //  add 
 
         [Fact]
         public async Task TestAddQuantities_Success()
@@ -95,7 +95,7 @@ namespace QuantityMeasurement.Tests
             Assert.Equal(2.0, result!.ResultValue);
         }
 
-        // ── history / count ───────────────────────────────────────────────
+        //  history / count 
 
         [Fact]
         public async Task TestGetOperationHistory_Success()
@@ -127,7 +127,7 @@ namespace QuantityMeasurement.Tests
             Assert.Equal("0", await response.Content.ReadAsStringAsync());
         }
 
-        // ── error handling ────────────────────────────────────────────────
+        //  error handling 
 
         [Fact]
         public async Task TestCompareQuantities_InvalidUnit_Returns400()

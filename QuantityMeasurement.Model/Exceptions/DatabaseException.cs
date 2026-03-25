@@ -1,6 +1,6 @@
 namespace QuantityMeasurementModel.Exceptions
 {
-    /// Thrown when a database operation fails.
+    // Thrown when a database operation fails.
     public class DatabaseException : QuantityMeasurementException
     {
         public DatabaseException(string message) : base(message) { }

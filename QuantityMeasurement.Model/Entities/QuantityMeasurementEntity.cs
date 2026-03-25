@@ -3,11 +3,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace QuantityMeasurementModel.Entities
 {
-    /// 
-    /// UC17 Enhancement: QuantityMeasurementEntity with EF Core annotations.
-    /// Maps to the QuantityMeasurements database table and defines columns,
-    /// indexes, and auto-generated timestamps.
-    /// 
     [Table("QuantityMeasurements")]
     public class QuantityMeasurementEntity
     {
@@ -15,7 +10,7 @@ namespace QuantityMeasurementModel.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        // -- first operand (this) --
+        //  first operand (this) 
         [Required]
         [Column("this_value")]
         public double ThisValue { get; set; }
@@ -28,7 +23,7 @@ namespace QuantityMeasurementModel.Entities
         [Column("this_measurement_type")]
         public string ThisMeasurementType { get; set; } = string.Empty;
 
-        // -- second operand (that) --
+        //  second operand (that)
         [Column("that_value")]
         public double ThatValue { get; set; }
 
@@ -71,16 +66,11 @@ namespace QuantityMeasurementModel.Entities
         [Column("updated_at")]
         public DateTime UpdatedAt { get; set; }
 
-        // ----------------------------------------------------------------
         //  Constructors
-        // ----------------------------------------------------------------
-
         // EF Core requires a parameterless constructor
         public QuantityMeasurementEntity() { }
 
-        /// 
-        /// Two-operand operations: ADD, SUBTRACT, COMPARE, DIVIDE.
-        /// 
+        // Two-operand operations: ADD, SUBTRACT, COMPARE, DIVIDE
         public QuantityMeasurementEntity(
             double thisValue, string thisUnit, string thisMeasurementType,
             double thatValue, string thatUnit,
@@ -101,7 +91,7 @@ namespace QuantityMeasurementModel.Entities
             UpdatedAt           = DateTime.UtcNow;
         }
 
-        /// Single-operand operation: CONVERT.
+        // Single-operand operation: CONVERT.
         public QuantityMeasurementEntity(
             double thisValue, string thisUnit, string thisMeasurementType,
             string operation,
@@ -117,7 +107,7 @@ namespace QuantityMeasurementModel.Entities
             UpdatedAt           = DateTime.UtcNow;
         }
 
-        /// Error constructor – records the inputs and error message.
+        // Error constructor – records the inputs and error message.
         public QuantityMeasurementEntity(
             double thisValue, string thisUnit,
             double thatValue, string? thatUnit,

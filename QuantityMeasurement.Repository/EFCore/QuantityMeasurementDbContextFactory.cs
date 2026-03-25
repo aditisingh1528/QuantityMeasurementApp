@@ -4,11 +4,11 @@ using Microsoft.Extensions.Configuration;
 
 namespace QuantityMeasurementRepository.EFCore
 {
-    /// <summary>
-    /// Lets "dotnet ef migrations add / database update" find the DbContext
-    /// without needing to boot the full WebApi host. Reads the connection string
-    /// from WebApi/appsettings.Production.json so it targets your real SQL Server.
-    /// </summary>
+    // 
+    // Lets "dotnet ef migrations add / database update" find the DbContext
+    // without needing to boot the full WebApi host. Reads the connection string
+    // from WebApi/appsettings.Production.json so it targets your real SQL Server.
+    // 
     public class QuantityMeasurementDbContextFactory
         : IDesignTimeDbContextFactory<QuantityMeasurementDbContext>
     {

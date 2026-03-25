@@ -24,7 +24,7 @@ namespace QuantityMeasurement.Tests
             _output.WriteLine("Test server running.");
         }
 
-        // ── request body helpers ─────────────────────────────────────────
+        //  request body helpers 
 
         private static TwoOperandRequestDTO TwoOp(
             double v1, string u1, string mt1,
@@ -54,7 +54,7 @@ namespace QuantityMeasurement.Tests
                 TargetUnit = targetUnit
             };
 
-        // ── compare ──────────────────────────────────────────────────────
+        //  compare 
 
         [Fact]
         public async Task TestCompare_FootEqualsInches_ResultIsTrue()
@@ -101,7 +101,7 @@ namespace QuantityMeasurement.Tests
             Assert.Equal("true", result!.ResultString);
         }
 
-        // ── convert ──────────────────────────────────────────────────────
+        //  convert 
 
         [Fact]
         public async Task TestConvert_CelsiusToFahrenheit_100To212()
@@ -114,7 +114,7 @@ namespace QuantityMeasurement.Tests
             Assert.Equal(212.0, result!.ResultValue, precision: 1);
         }
 
-        // ── add ──────────────────────────────────────────────────────────
+        //  add 
 
         [Fact]
         public async Task TestAdd_GallonAndLitres_ResultIs2Gallons()
@@ -138,7 +138,7 @@ namespace QuantityMeasurement.Tests
             Assert.Equal(24.0, result!.ResultValue, precision: 1);
         }
 
-        // ── subtract ─────────────────────────────────────────────────────
+        //  subtract 
 
         [Fact]
         public async Task TestSubtract_FeetMinusInches_ResultIs1Foot()
@@ -162,7 +162,7 @@ namespace QuantityMeasurement.Tests
             Assert.Equal(12.0, result!.ResultValue, precision: 1);
         }
 
-        // ── divide ───────────────────────────────────────────────────────
+        //  divide 
 
         [Fact]
         public async Task TestDivide_YardByFoot_ResultIs3()
@@ -184,7 +184,7 @@ namespace QuantityMeasurement.Tests
             Assert.Equal(HttpStatusCode.InternalServerError, response.StatusCode);
         }
 
-        // ── history / count ───────────────────────────────────────────────
+        //  history / count 
 
         [Fact]
         public async Task TestGetOperationHistory_Convert_ReturnsNonEmpty()
@@ -225,7 +225,7 @@ namespace QuantityMeasurement.Tests
             Assert.True(count > 0);
         }
 
-        // ── validation failures ───────────────────────────────────────────
+        //  validation failures 
 
         [Fact]
         public async Task TestCompare_InvalidUnit_Returns400()

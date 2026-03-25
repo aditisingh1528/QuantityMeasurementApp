@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace QuantityMeasurementModel.DTOs
 {
-    /// <summary>Request DTO for compare, add, subtract, divide (two operands, no target unit).</summary>
+    // Request DTO for compare, add, subtract, divide (two operands, no target unit).
     public class TwoOperandRequestDTO
     {
         [Required(ErrorMessage = "First quantity (this) is required")]
@@ -12,7 +12,7 @@ namespace QuantityMeasurementModel.DTOs
         public QuantityDTO? That { get; set; }
     }
 
-    /// <summary>Request DTO for convert (source value+unit, target unit only).</summary>
+    // Request DTO for convert (source value+unit, target unit only).
     public class ConvertRequestDTO
     {
         [Required(ErrorMessage = "Source quantity is required")]
@@ -22,10 +22,10 @@ namespace QuantityMeasurementModel.DTOs
         public string? ToUnit { get; set; }
     }
 
-    /// <summary>
-    /// Request DTO for add-with-target-unit and subtract-with-target-unit.
-    /// Caller provides two operands plus the unit they want the result expressed in.
-    /// </summary>
+    // 
+    // Request DTO for add-with-target-unit and subtract-with-target-unit.
+    // Caller provides two operands plus the unit they want the result expressed in.
+    // 
     public class ArithmeticWithTargetRequestDTO
     {
         [Required(ErrorMessage = "First quantity (this) is required")]

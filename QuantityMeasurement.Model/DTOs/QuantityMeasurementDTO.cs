@@ -2,7 +2,7 @@ using QuantityMeasurementModel.Entities;
 
 namespace QuantityMeasurementModel.DTOs
 {
-    /// <summary>Response DTO returned by every API endpoint.</summary>
+    // Response DTO returned by every API endpoint.
     public class QuantityMeasurementDTO
     {
         // ---- inputs ----
@@ -18,12 +18,12 @@ namespace QuantityMeasurementModel.DTOs
         public string? Operation { get; set; }
 
         // ---- result ----
-        /// <summary>Numeric result (conversion, arithmetic, divide ratio).</summary>
+        // Numeric result (conversion, arithmetic, divide ratio).
         public double  ResultValue           { get; set; }
         public string? ResultUnit            { get; set; }
         public string? ResultMeasurementType { get; set; }
 
-        /// <summary>Human-readable result for compare ("true" / "false").</summary>
+        // Human-readable result for compare ("true" / "false").
         public string? ResultString { get; set; }
 
         // ---- error info ----

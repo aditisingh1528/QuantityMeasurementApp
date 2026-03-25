@@ -14,7 +14,7 @@ namespace QuantityMeasurementRepository.Migrations
     [Migration("20240101000000_InitialCreate")]
     partial class InitialCreate
     {
-        /// <inheritdoc />
+        // <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618

@@ -4,7 +4,7 @@ using QuantityMeasurementModel.Exceptions;
 
 namespace QuantityMeasurementWebApi.Middleware
 {
-    /// UC17 Step 13: GlobalExceptionHandler – centralised error handling for all controllers. 
+    // GlobalExceptionHandler – centralised error handling for all controllers. 
     public class GlobalExceptionHandler : IExceptionFilter
     {
         private readonly ILogger<GlobalExceptionHandler> _logger;
@@ -56,7 +56,7 @@ namespace QuantityMeasurementWebApi.Middleware
         }
     }
 
-    /// Standard error response body returned by the exception handler.
+    // Standard error response body returned by the exception handler.
     public class ErrorResponse
     {
         public DateTime Timestamp { get; set; }

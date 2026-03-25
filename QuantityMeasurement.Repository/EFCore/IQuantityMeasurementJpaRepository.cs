@@ -12,22 +12,22 @@ namespace QuantityMeasurementRepository.EFCore
 
         // Query methods
 
-        ///findByOperation
+        //findByOperation
         List<QuantityMeasurementEntity> FindByOperation(string operation);
 
-        /// findByThisMeasurementType
+        // findByThisMeasurementType
         List<QuantityMeasurementEntity> FindByThisMeasurementType(string measurementType);
 
-        /// findByCreatedAtAfter(DateTime date)
+        // findByCreatedAtAfter(DateTime date)
         List<QuantityMeasurementEntity> FindByCreatedAtAfter(DateTime date);
 
-        /// findSuccessfulOperations(string operation) – custom query
+        // findSuccessfulOperations(string operation) – custom query
         List<QuantityMeasurementEntity> FindSuccessfulOperations(string operation);
 
-        /// countByOperationAndIsErrorFalse(string operation)
+        // countByOperationAndIsErrorFalse(string operation)
         long CountByOperationAndIsErrorFalse(string operation);
 
-        /// findByIsErrorTrue()
+        // findByIsErrorTrue()
         List<QuantityMeasurementEntity> FindByIsErrorTrue();
     }
 }

@@ -3,7 +3,7 @@ using QuantityMeasurementRepository.Interface;
 
 namespace QuantityMeasurementRepository.Cache
 {
-    /// UC16 in-memory cache repository
+    // UC16 in-memory cache repository
     public class QuantityMeasurementCacheRepository : IQuantityMeasurementRepository
     {
         private static QuantityMeasurementCacheRepository? _instance;

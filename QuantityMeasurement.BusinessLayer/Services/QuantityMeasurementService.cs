@@ -3,13 +3,8 @@ using QuantityMeasurementRepository.Interface;
 
 namespace QuantityMeasurementBusinessLayer.Services
 {
-    /// 
-    /// UC16 service wrapper – kept for backward compatibility with the ConsoleApp.
-    ///
-    /// UC17: Added a constructor that accepts IQuantityMeasurementJpaRepository
-    /// so the Web API DI can use this class directly if needed.
-    /// The actual logic still lives in QuantityMeasurementServiceImpl.
-    /// 
+    // UC16 service wrapper – kept for backward compatibility with the ConsoleApp.
+    // UC17: Added a constructor that accepts IQuantityMeasurementJpaRepository 
     public class QuantityMeasurementService : QuantityMeasurementServiceImpl
     {
         // UC15-compatible: no-arg constructor
