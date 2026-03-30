@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <!-- UC17: needed so Program class is visible to integration tests -->
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <!-- references to the existing projects -->
+  <ItemGroup>
+    <ProjectReference Include="..\QuantityMeasurement.BusinessLayer\QuantityMeasurement.BusinessLayer.csproj" />
+    <ProjectReference Include="..\QuantityMeasurement.Model\QuantityMeasurement.Model.csproj" />
+    <ProjectReference Include="..\QuantityMeasurement.Repository\QuantityMeasurement.Repository.csproj" />
+  </ItemGroup>
+
+  <!-- UC17 Step 2A: Spring Boot equivalent dependencies -->
+  <ItemGroup>
+    <!-- EF Core – replaces JDBC / Spring Data JPA -->
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.0" />
+
+    <!-- Swagger / OpenAPI – equivalent to springdoc-openapi in the Java version -->
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+  </ItemGroup>
+
+  <!-- copy appsettings to output -->
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="appsettings.Production.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
