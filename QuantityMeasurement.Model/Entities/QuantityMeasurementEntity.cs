@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace QuantityMeasurementModel.Entities
 {
-    // UC17: EF Core annotations
+    // UC17 Enhancement: QuantityMeasurementEntity with EF Core annotations
     [Table("QuantityMeasurements")]
     public class QuantityMeasurementEntity
     {
@@ -49,7 +49,7 @@ namespace QuantityMeasurementModel.Entities
         [Column("operation")]
         public string Operation { get; set; } = string.Empty;
 
-        // for comparison results – stores "Equal" or "Not Equal"
+        // for comparison results
         [Column("result_string")]
         public string? ResultString { get; set; }
 

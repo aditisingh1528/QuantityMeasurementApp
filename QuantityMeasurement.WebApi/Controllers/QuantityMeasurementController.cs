@@ -5,7 +5,6 @@ using QuantityMeasurementModel.DTOs;
 
 namespace QuantityMeasurementWebApi.Controllers
 {
-    [Authorize]
     [ApiController]
     [Route("api/v1/quantities")]
     [Produces("application/json")]
@@ -22,7 +21,9 @@ namespace QuantityMeasurementWebApi.Controllers
             _logger  = logger;
         }
 
-        // Compare two quantities
+        //  Public dashboard endpoints — no login required z
+        // Com  pare two quantities
+        [AllowAnonymous]
         [HttpPost("compare")]
         public ActionResult<QuantityMeasurementDTO> Compare([FromBody] TwoOperandRequestDTO request)
         {
@@ -31,6 +32,7 @@ namespace QuantityMeasurementWebApi.Controllers
         }
 
         // Convert a quantity to a different unit of the same type
+        [AllowAnonymous]
         [HttpPost("convert")]
         public ActionResult<QuantityMeasurementDTO> Convert([FromBody] ConvertRequestDTO request)
         {
@@ -41,6 +43,7 @@ namespace QuantityMeasurementWebApi.Controllers
         }
 
         // Add two quantities- result expressed in the unit of the first operand
+        [AllowAnonymous]
         [HttpPost("add")]
         public ActionResult<QuantityMeasurementDTO> Add([FromBody] TwoOperandRequestDTO request)
         {
@@ -49,6 +52,7 @@ namespace QuantityMeasurementWebApi.Controllers
         }
 
         // Add two quantities- result expressed in the specified target unit
+        [AllowAnonymous]
         [HttpPost("add-with-target-unit")]
         public ActionResult<QuantityMeasurementDTO> AddWithTargetUnit(
             [FromBody] ArithmeticWithTargetRequestDTO request)
@@ -59,6 +63,7 @@ namespace QuantityMeasurementWebApi.Controllers
         }
 
         // Subtract two quantities- result expressed in the unit of the first operand.
+        [AllowAnonymous]
         [HttpPost("subtract")]
         public ActionResult<QuantityMeasurementDTO> Subtract([FromBody] TwoOperandRequestDTO request)
         {
@@ -67,6 +72,7 @@ namespace QuantityMeasurementWebApi.Controllers
         }
 
         // Subtract two quantities- result expressed in the specified target unit.
+        [AllowAnonymous]
         [HttpPost("subtract-with-target-unit")]
         public ActionResult<QuantityMeasurementDTO> SubtractWithTargetUnit(
             [FromBody] ArithmeticWithTargetRequestDTO request)
@@ -77,6 +83,7 @@ namespace QuantityMeasurementWebApi.Controllers
         }
 
         // Divide two quantities- returns a dimensionless ratio
+        [AllowAnonymous]
         [HttpPost("divide")]
         public ActionResult<QuantityMeasurementDTO> Divide([FromBody] TwoOperandRequestDTO request)
         {
@@ -84,7 +91,10 @@ namespace QuantityMeasurementWebApi.Controllers
             return Ok(result);
         }
 
+        //  Protected history endpoints — login required 
+
         // Returns all saved operations matching the given operation name (COMPARE, ADD, etc)
+        [Authorize]
         [HttpGet("history/operation/{operation}")]
         public ActionResult<List<QuantityMeasurementDTO>> GetByOperation(string operation)
         {
@@ -92,6 +102,7 @@ namespace QuantityMeasurementWebApi.Controllers
         }
 
         // Returns all saved operations for a given measurement type (LengthUnit, etc)
+        [Authorize]
         [HttpGet("history/type/{type}")]
         public ActionResult<List<QuantityMeasurementDTO>> GetByType(string type)
         {
@@ -99,6 +110,7 @@ namespace QuantityMeasurementWebApi.Controllers
         }
 
         // Returns the count of successful (non-error) operations of a given type
+        [Authorize]
         [HttpGet("count/{operation}")]
         public ActionResult<long> GetCount(string operation)
         {
@@ -106,6 +118,7 @@ namespace QuantityMeasurementWebApi.Controllers
         }
 
         // Returns all operations that resulted in an error
+        [Authorize]
         [HttpGet("history/errored")]
         public ActionResult<List<QuantityMeasurementDTO>> GetErrored()
         {

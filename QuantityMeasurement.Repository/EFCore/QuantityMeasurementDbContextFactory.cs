@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 
+
 namespace QuantityMeasurementRepository.EFCore
 {
         public class QuantityMeasurementDbContextFactory
@@ -25,17 +26,9 @@ namespace QuantityMeasurementRepository.EFCore
 
             var optionsBuilder = new DbContextOptionsBuilder<QuantityMeasurementDbContext>();
 
-            if (string.IsNullOrWhiteSpace(connectionString) ||
-                connectionString.Equals("InMemory", StringComparison.OrdinalIgnoreCase))
-            {
-                // Fallback: use LocalDB so dotnet ef can still generate SQL scripts
-                optionsBuilder.UseSqlServer(
-                    "Server=(localdb)\\mssqllocaldb;Database=QuantityMeasurementDB;Trusted_Connection=True;");
-            }
-            else
-            {
-                optionsBuilder.UseSqlServer(connectionString);
-            }
+            var resolvedConnection = (string.IsNullOrWhiteSpace(connectionString) || connectionString.Equals("InMemory", StringComparison.OrdinalIgnoreCase)) ?       "Host=localhost;Database=QuantityMeasurementDB;Username=postgres;         Password=postgres" : connectionString;
+
+            optionsBuilder.UseNpgsql(resolvedConnection);
 
             return new QuantityMeasurementDbContext(optionsBuilder.Options);
         }

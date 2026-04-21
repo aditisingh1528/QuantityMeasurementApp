@@ -5,6 +5,7 @@ using QuantityMeasurementRepository.EFCore;
 using QuantityMeasurementWebApi.Config;
 using QuantityMeasurementWebApi.Middleware;
 using Microsoft.OpenApi.Models;
+using Npgsql.EntityFrameworkCore.PostgreSQL;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,15 +14,10 @@ builder.Logging.AddFilter("Microsoft.EntityFrameworkCore", LogLevel.Warning);
 builder.Logging.AddFilter("Microsoft.AspNetCore", LogLevel.Warning);
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-var useInMemory = string.IsNullOrWhiteSpace(connectionString) ||
-                  connectionString.Equals("InMemory", StringComparison.OrdinalIgnoreCase);
 
 builder.Services.AddDbContext<QuantityMeasurementDbContext>(options =>
 {
-    if (useInMemory)
-        options.UseInMemoryDatabase("QuantityMeasurementDb");
-    else
-        options.UseSqlServer(connectionString);
+    options.UseNpgsql(connectionString);
 });
 
 builder.Services.AddScoped<IQuantityMeasurementJpaRepository,
@@ -79,14 +75,11 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<QuantityMeasurementDbContext>();
-    if (useInMemory)
-        db.Database.EnsureCreated();
-    else
-        db.Database.Migrate();
+    db.Database.Migrate();
 }
 
 var env    = app.Environment.EnvironmentName;
-var dbMode = useInMemory ? "In-Memory" : "SQL Server";
+var dbMode = "PostgreSQL";
 
 Console.WriteLine("Quantity Measurement API started");
 Console.WriteLine($"  Environment : {env}");
@@ -101,6 +94,7 @@ app.UseSwaggerUI(c =>
 Console.WriteLine("  Swagger UI  : http://localhost:8080/swagger");
 
 app.UseSecurityConfig();
+app.UseAuthentication();   // Must come before UseAuthorization
 app.UseAuthorization();
 app.MapControllers();
 

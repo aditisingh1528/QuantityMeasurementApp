@@ -31,10 +31,10 @@ namespace QuantityMeasurementRepository.EFCore
                       .HasDatabaseName("idx_created_at");
 
                 entity.Property(e => e.CreatedAt)
-                      .HasDefaultValueSql("GETUTCDATE()");
+                      .HasDefaultValueSql("NOW()");
 
                 entity.Property(e => e.UpdatedAt)
-                      .HasDefaultValueSql("GETUTCDATE()");
+                      .HasDefaultValueSql("NOW()");
             });
         }
         public override int SaveChanges()

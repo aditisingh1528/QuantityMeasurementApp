@@ -224,6 +224,11 @@ namespace QuantityMeasurementBusinessLayer.Services
                 var m2 = convertDtoToModel(thatQ, c2);
                 ValidateSameType(m1, m2);
 
+                if (c1.GetMeasurementType() == "Temperature")
+                    throw new QuantityMeasurementException(
+                        "Arithmetic operations (add, subtract, divide) are not supported for Temperature. " +
+                        "Use comparison or conversion instead.");
+
                 double baseResult = arithmeticOp(
                     c1.ConvertToBase(m1.Value),
                     c2.ConvertToBase(m2.Value));
