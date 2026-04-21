@@ -15,6 +15,13 @@ builder.Logging.AddFilter("Microsoft.AspNetCore", LogLevel.Warning);
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
+// Convert postgres:// URL format to Npgsql 
+if (!string.IsNullOrEmpty(connectionString) && connectionString.StartsWith("postgresql://"))
+{
+    var uri = new Uri(connectionString);
+    var userInfo = uri.UserInfo.Split(':');
+    connectionString = $"Host={uri.Host};Port={uri.Port};Database={uri.AbsolutePath.TrimStart('/')};Username={userInfo[0]};Password={userInfo[1]};SSL Mode=Require;Trust Server Certificate=true";
+}
 builder.Services.AddDbContext<QuantityMeasurementDbContext>(options =>
 {
     options.UseNpgsql(connectionString);
