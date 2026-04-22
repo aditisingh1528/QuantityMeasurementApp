@@ -12,13 +12,13 @@ namespace QuantityMeasurementWebApi.Config
         public const string CorsPolicyName = "QuantityMeasurementCorsPolicy";
 
         public static IServiceCollection AddSecurityConfig(this IServiceCollection services, IConfiguration configuration)
-        {
+        {   
             services.AddCors(options =>
             {
                 options.AddPolicy(CorsPolicyName, policy =>
                 {
                     policy
-                        .WithOrigins("http://localhost:3000", "http://localhost:8080", "http://localhost:5500", "http://127.0.0.1:5500")
+                        .WithOrigins("http://localhost:3000", "http://localhost:8080", "http://localhost:5500", "http://127.0.0.1:5500","https://your-app.netlify.app")
                         .AllowAnyHeader()
                         .AllowAnyMethod()
                         .AllowCredentials();
